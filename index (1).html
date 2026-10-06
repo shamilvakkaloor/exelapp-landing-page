@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ExelApp – Web apps for teachers, institutions and communities</title>
+<meta name="description" content="ExelApp is the home of practical web apps built by Shamil of ExcelGuru.">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f2f7f3; --panel:#ffffff; --ink:#14301f; --muted:#51675a;
+  --line:#c9dccf; --green:#0e6b43; --green-ink:#ffffff; --hl:#f4b83a;
+  --sans:"Avenir Next","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1b14; --panel:#16271c; --ink:#e6f1ea; --muted:#9db3a5;
+    --line:#2a4033; --green:#4fc18a; --green-ink:#08150d; --hl:#f4b83a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1b14; --panel:#16271c; --ink:#e6f1ea; --muted:#9db3a5;
+  --line:#2a4033; --green:#4fc18a; --green-ink:#08150d; --hl:#f4b83a;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hl);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;letter-spacing:-.02em;text-decoration:none}
+.brand i{width:22px;height:22px;border-radius:4px;background:var(--green);display:grid;grid-template:1fr 1fr/1fr 1fr;gap:2px;padding:3px}
+.brand i b{background:var(--green-ink);opacity:.9;border-radius:1px}
+.brand i b:nth-child(2){background:var(--hl);opacity:1}
+header a.guru{font-size:.95rem;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+header a.guru:hover{color:var(--ink)}
+
+.hero{
+  padding:56px 0 64px;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;
+  background-position:-1px -1px;
+  -webkit-mask-image:linear-gradient(#000 70%,transparent);
+  mask-image:linear-gradient(#000 70%,transparent);
+}
+.hero .wrap{position:relative}
+h1{font-size:clamp(2.1rem,6.5vw,3.9rem);line-height:1.04;letter-spacing:-.035em;margin:0 0 18px;max-width:15em;font-weight:800}
+.lead{font-size:1.15rem;color:var(--muted);max-width:34em;margin:0 0 30px}
+.formula{display:flex;align-items:stretch;max-width:520px;border:1px solid var(--green);background:var(--panel);border-radius:6px;overflow:hidden;font-family:ui-monospace,"SF Mono",Consolas,monospace;font-size:.95rem}
+.formula span{padding:10px 14px}
+.formula .fx{background:var(--green);color:var(--green-ink);font-weight:700;font-style:italic}
+.formula .f{overflow-x:auto;white-space:nowrap}
+.formula mark{background:var(--hl);color:#14301f;padding:0 3px;border-radius:2px}
+
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 20px}
+.sheet{border:1px solid var(--line);background:var(--panel);border-radius:8px;overflow:hidden}
+.row{display:grid;grid-template-columns:minmax(150px,1fr) 2fr auto;align-items:center;gap:8px 20px;padding:16px 20px;border-top:1px solid var(--line);text-decoration:none}
+.row:first-child{border-top:0}
+a.row:hover{background:color-mix(in srgb,var(--green) 8%,var(--panel))}
+.name{font-weight:700;font-size:1.05rem}
+.desc{color:var(--muted)}
+.tag{justify-self:end;font-size:.85rem;padding:3px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.tag.live{background:var(--green);border-color:var(--green);color:var(--green-ink);font-weight:600}
+@media (max-width:640px){
+  .row{grid-template-columns:1fr auto}
+  .desc{grid-column:1/-1;order:3}
+  .hero{padding:36px 0 48px;background-size:44px 44px}
+}
+
+.about{padding:56px 0 40px;display:grid;gap:12px;max-width:42em}
+.about p{margin:0;color:var(--muted)}
+.btn{display:inline-block;margin-top:8px;background:var(--green);color:var(--green-ink);padding:11px 20px;border-radius:6px;font-weight:700;text-decoration:none;width:fit-content}
+.btn:hover{filter:brightness(1.1)}
+footer{border-top:1px solid var(--line);padding:22px 0 28px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/" aria-label="ExelApp home"><i aria-hidden="true"><b></b><b></b><b></b><b></b></i>ExelApp</a>
+    <a class="guru" href="https://excelguru.co.in" rel="noopener">ExcelGuru</a>
+  </header>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Web apps for teachers, institutions and communities.</h1>
+      <p class="lead">Simple tools for running fests, quizzes, results and collections, built by Shamil of ExcelGuru. Each app has its own address under exelapp.com.</p>
+      <div class="formula" role="img" aria-label="Every app lives at name dot exelapp dot com">
+        <span class="fx">fx</span>
+        <span class="f">=<mark>"name"</mark> &amp; ".exelapp.com"</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="apps-h">
+    <h2 id="apps-h">Apps</h2>
+    <p class="sub">Open an app from the list. New ones are added as they are ready.</p>
+    <div class="sheet" id="sheet"></div>
+  </section>
+
+  <section class="wrap about">
+    <h2>Learn to build your own</h2>
+    <p>ExcelGuru teaches Excel, Google Workspace, Power Query and Google Apps Script, with a focus on teachers and madrasa educators in Kerala.</p>
+    <a class="btn" href="https://excelguru.co.in" rel="noopener">Visit ExcelGuru</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 ExelApp</span>
+    <span>exelapp.com</span>
+  </div>
+</footer>
+
+<script>
+// Add a url when an app goes live. An empty url shows "Coming soon".
+const apps = [
+  {name:"Fest App", desc:"Festival management and live scoring for school and madrasa fests.", url:""},
+  {name:"Quiz Buzzer", desc:"A real-time online buzzer for quiz contests, replacing the physical one.", url:""},
+  {name:"Nikah Kuri", desc:"A rotating collection system that helps families with wedding expenses.", url:""},
+  {name:"KLA2026 Dashboard", desc:"Kerala assembly election data in one clear dashboard.", url:""}
+];
+const sheet = document.getElementById("sheet");
+for (const a of apps) {
+  const live = !!a.url;
+  const el = document.createElement(live ? "a" : "div");
+  el.className = "row";
+  if (live) { el.href = a.url; el.rel = "noopener"; }
+  const n = document.createElement("span"); n.className = "name"; n.textContent = a.name;
+  const d = document.createElement("span"); d.className = "desc"; d.textContent = a.desc;
+  const t = document.createElement("span"); t.className = "tag" + (live ? " live" : ""); t.textContent = live ? "Open" : "Coming soon";
+  el.append(n, d, t);
+  sheet.append(el);
+}
+</script>
+</body>
+</html>
